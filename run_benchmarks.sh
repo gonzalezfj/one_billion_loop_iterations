@@ -1,20 +1,28 @@
 #!/bin/bash
 
-echo "Running all benchmarks..."
-echo "------------------------"
-
-echo -e "\nRunning JavaScript benchmark:"
-node src/benchmark.js
-
-echo -e "\nRunning Go benchmark:"
-go run src/benchmark.go
-
-echo -e "\nCompiling and running C benchmark:"
 mkdir -p build
-gcc src/benchmark.c -O3 -o build/benchmark
-./build/benchmark
+mkdir -p results
 
-echo -e "\nRunning Python benchmark (PyPy):"
-pypy src/benchmark.py
+# Compile C
+gcc src/loop_benchmark.c -O3 -o build/loop_benchmark_c
 
-echo -e "\nAll benchmarks completed!"
+# Compile Go
+go build -o build/loop_benchmark_go src/loop_benchmark.go
+
+# Compile Rust
+rustc -C opt-level=3 src/loop_benchmark.rs -o build/loop_benchmark_rust
+
+echo "Running benchmarks with hyperfine..."
+echo "-----------------------------------"
+
+hyperfine \
+  --warmup 3 \
+  --runs 10 \
+  --shell none \
+  --export-markdown results/results.md \
+  --export-json results/results.json \
+  'node src/loop_benchmark.js' \
+  'pypy src/loop_benchmark.py' \
+  './build/loop_benchmark_go' \
+  './build/loop_benchmark_c' \
+  './build/loop_benchmark_rust'

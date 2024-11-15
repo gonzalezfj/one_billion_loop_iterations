@@ -1,18 +1,11 @@
 package main
 
-import (
-	"fmt"
-	"time"
-)
-
 func main() {
 	const cacheLineSize = 64
 	type paddedInt struct {
 		value int
 		pad   [cacheLineSize - 8]byte
 	}
-
-	start := time.Now()
 
 	var array [10000]paddedInt
 
@@ -21,7 +14,4 @@ func main() {
 			array[i].value = array[i].value + j
 		}
 	}
-
-	duration := time.Since(start)
-	fmt.Printf("Go execution time: %.2f ms\n", float64(duration.Milliseconds()))
 }
