@@ -33,3 +33,32 @@ Simply execute the benchmark script:
 ```bash
 ./run_benchmarks.sh
 ```
+
+## My Results
+
+My machine:
+
+```
+  Chip: Apple M3 Pro
+  Total Number of Cores: 11 (5 performance and 6 efficiency)
+  Memory: 18 GB
+```
+
+```bash
+Running all benchmarks...
+------------------------
+
+Running JavaScript benchmark:
+JavaScript execution time: 1040.30 ms
+
+Running Go benchmark:
+Go execution time: 389.00 ms
+
+Compiling and running C benchmark:
+C execution time: 0.01 ms
+
+Running Python benchmark (PyPy):
+Python execution time: 1462.05 ms
+
+All benchmarks completed!
+```
