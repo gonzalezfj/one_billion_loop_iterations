@@ -2,6 +2,8 @@
 
 This project compares the execution speed of a simple computational task across different programming languages.
 
+> Inspired by [Ben Dicken's loop performance comparison](https://x.com/BenjDicken/status/1857449788893286484) and his excellent [visual analysis](https://benjdd.com/loops/).
+
 ## 🎯 The Task
 
 Each benchmark performs the same computation:
