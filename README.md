@@ -19,6 +19,7 @@ Each benchmark performs the same computation:
 - Go 🦫
 - C 🎯
 - Rust 🦀
+- V
 
 ## 📋 Prerequisites
 
@@ -29,6 +30,7 @@ Make sure you have the following installed:
 - Go
 - GCC (GNU Compiler Collection)
 - Rust
+- V
 
 ## 🏃‍♂️ Running the Benchmarks
 
