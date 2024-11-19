@@ -12,6 +12,9 @@ go build -o build/loop_benchmark_go src/loop_benchmark.go
 # Compile Rust
 rustc -C opt-level=3 src/loop_benchmark.rs -o build/loop_benchmark_rust
 
+# Compile V
+v -prod -gc none -o build/loop_benchmark_v src/loop_benchmark.v
+
 echo "Running benchmarks with hyperfine..."
 echo "-----------------------------------"
 
@@ -25,4 +28,5 @@ hyperfine \
   'pypy src/loop_benchmark.py' \
   './build/loop_benchmark_go' \
   './build/loop_benchmark_c' \
-  './build/loop_benchmark_rust'
+  './build/loop_benchmark_rust' \
+  './build/loop_benchmark_v'
